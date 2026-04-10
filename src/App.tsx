@@ -109,7 +109,7 @@ export default function App() {
               href="#contact"
               className="bg-rose text-white px-6 py-2 rounded-full text-sm uppercase tracking-widest font-bold hover:bg-rose/90 transition-all shadow-lg shadow-rose/20"
             >
-              Book a Session
+              Termin Buchen
             </a>
           </div>
 
@@ -278,15 +278,12 @@ export default function App() {
             <div>
               <span className="text-rose uppercase tracking-[0.3em] text-xs font-bold mb-4 block">Ablauf</span>
               <h2 className="text-5xl font-serif mb-10">Behandlung Ablauf Kosten</h2>
-              <div className="space-y-8 text-cream/80 text-lg leading-relaxed italic font-serif">
+              <div className="space-y-8 text-cream/80 text-lg leading-relaxed italic">
                 <p>
                   Je nach Anliegen können die Methoden einzeln oder kombiniert angewendet werden.
                 </p>
                 <p>
                   Gemeinsam finden wir den Weg, der dich in deinem aktuellen Lebensabschnitt am besten unterstützt – körperlich, emotional und energetisch.
-                </p>
-                <p className="text-rose not-italic font-sans font-bold text-2xl">
-                  Kosten: 90 Franken pro Stunde.
                 </p>
                 <p className="text-sm">
                   Preise nach Absprache bei Thai Yoga Massage und Energetischer Raumreinigung.
@@ -303,8 +300,18 @@ export default function App() {
                     <p className="text-xs uppercase tracking-widest text-cream/40">Behandlung</p>
                   </div>
                   <div className="text-right">
-                    <span className="text-xs text-cream/40 block mb-1 uppercase tracking-widest">90 Min</span>
-                    <span className="text-2xl font-serif">nach Absprache</span>
+                    <span className="text-xs text-cream/40 block mb-1 uppercase tracking-widest">60 Min</span>
+                    <span className="text-2xl font-serif">90 CHF</span>
+                  </div>
+                </div>
+                <div className="flex justify-between items-end border-b border-white/10 pb-6">
+                  <div>
+                    <h4 className="text-xl font-serif text-rose mb-1">IBP Prozessbegleitung</h4>
+                    <p className="text-xs uppercase tracking-widest text-cream/40">Ganzheitliche Begleitung</p>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-xs text-cream/40 block mb-1 uppercase tracking-widest">60 Min</span>
+                    <span className="text-2xl font-serif">90 CHF</span>
                   </div>
                 </div>
                 <div className="flex justify-between items-end border-b border-white/10 pb-6">
@@ -314,7 +321,7 @@ export default function App() {
                   </div>
                   <div className="text-right">
                     <span className="text-xs text-cream/40 block mb-1 uppercase tracking-widest">90 Min</span>
-                    <span className="text-2xl font-serif">90 CHF</span>
+                    <span className="text-2xl font-serif text-lg">nach Absprache</span>
                   </div>
                 </div>
               </div>
