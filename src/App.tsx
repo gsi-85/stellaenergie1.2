@@ -53,7 +53,7 @@ export default function App() {
       description: "Energiearbeit kann nicht nur den Menschen selbst unterstützen, sondern auch das Umfeld, in dem wir leben und arbeiten. Auch Räume tragen Erinnerungen, Stimmungen und Eindrücke. Wenn sich diese verdichten, kann die Atmosphäre eines Ortes als belastend oder unruhig empfunden werden.",
       benefits: ["Wohnungen und Häuser", "Praxisräume", "Arbeitsräume", "nach Umzug oder Veränderungen"],
       icon: <Wind className="w-6 h-6" />,
-      image: "/public/raumreinigung.jpeg"
+      image: "/raumreinigung.jpeg"
     },
     {
       title: "Thai Yoga Massage",
