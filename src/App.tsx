@@ -145,7 +145,7 @@ export default function App() {
                 onClick={() => setIsMenuOpen(false)}
                 className="bg-rose text-white px-6 py-4 rounded-xl text-center font-bold uppercase tracking-widest mt-4"
               >
-                Book a Session
+                Termin Buchen
               </a>
             </div>
           </motion.div>
@@ -278,7 +278,7 @@ export default function App() {
             <div>
               <span className="text-rose uppercase tracking-[0.3em] text-xs font-bold mb-4 block">Ablauf</span>
               <h2 className="text-5xl font-serif mb-10">Behandlung Ablauf Kosten</h2>
-              <div className="space-y-8 text-cream/80 text-lg leading-relaxed italic">
+              <div className="space-y-8 text-cream/80 text-lg leading-relaxed">
                 <p>
                   Je nach Anliegen können die Methoden einzeln oder kombiniert angewendet werden.
                 </p>
