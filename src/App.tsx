@@ -448,13 +448,18 @@ export default function App() {
 
             <div className="relative">
               <div className="absolute -inset-4 bg-rose/5 rounded-[3rem] blur-2xl"></div>
-              <div className="relative rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white">
-                <img 
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqtHHPCNO-Ul60DQn8RIFfD8iXNPIuJAnsp-AZyK0jXhC14316FbKN8OINyx8tD9uTNF98bKj1uwy3EAryDjyNkzdI8aGZdHk95hZKh9C0atnlmQqY1GMIR8jS4MyKB2Ys2PH2XCxRv0MdHK4dhfMt9pos9zMxvPU5V2RGVBf0sRzVo-9Q6wQHib6ikQRvdHZhC88zjeKM7Xa28kkKA63IFf8OODjLuL3LnFV25DG3dGzUMNnQuZXlx3OFWYpYgf5LdhRLQI9uGZMY" 
-                  alt="Map Location" 
-                  className="w-full h-[500px] object-cover grayscale opacity-80 hover:grayscale-0 transition-all duration-700"
-                  referrerPolicy="no-referrer"
-                />
+              <div className="relative rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white h-[500px]">
+                <iframe 
+                  src="https://maps.google.com/maps?q=Neuhofstrasse%203c,%206340%20Baar,%20Schweiz&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                  width="100%" 
+                  height="100%" 
+                  style={{ border: 0 }} 
+                  allowFullScreen={true} 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="grayscale opacity-80 hover:grayscale-0 transition-all duration-700"
+                  title="Map Location"
+                ></iframe>
               </div>
             </div>
           </div>
