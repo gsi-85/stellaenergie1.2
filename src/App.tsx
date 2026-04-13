@@ -67,7 +67,7 @@ export default function App() {
       description: "Die IBP Prozessbegleitung verbindet Körperwahrnehmung, Atem, Gespräch und achtsame Selbsterforschung. Viele unserer Prägungen und Erfahrungen sind im Körper gespeichert. Durch bewusstes Wahrnehmen, Verstehen und Integrieren können alte Muster transformiert und neue Handlungsspielräume eröffnet werden.",
       benefits: ["Beziehungsthemen", "Selbstwertfragen", "Übergängen und Lebenskrisen", "emotionaler Regulation", "persönlicher Entwicklung"],
       icon: <Heart className="w-6 h-6" />,
-      image: "https://gsi-85.github.io/stella-energiearbeit-v1.1/static/river.jpeg"
+      image: "/river.jpeg"
     }
   ];
 
@@ -156,7 +156,7 @@ export default function App() {
       <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://gsi-85.github.io/stella-energiearbeit-v1.1/static/wolken.png" 
+            src="/wolken.png" 
             alt="Hero Background" 
             className="w-full h-full object-cover opacity-60 scale-105"
             referrerPolicy="no-referrer"
