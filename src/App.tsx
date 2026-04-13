@@ -179,7 +179,7 @@ export default function App() {
             transition={{ delay: 0.3, duration: 0.8 }}
             className="text-xl md:text-3xl font-serif italic text-rose-dark mb-12 tracking-wide drop-shadow-sm"
           >
-            Energiearbeit · IBP Prozessbegleitung · Thai Yoga Massage
+            Energiearbeit · Thai Yoga Massage · IBP Prozessbegleitung
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -368,7 +368,7 @@ export default function App() {
               <h2 className="text-5xl md:text-6xl font-serif text-rose-dark mb-8">Stella Anastasio</h2>
               <div className="space-y-6 text-stone-600 leading-relaxed text-lg">
                 <p>
-                  Mein beruflicher Hintergrund liegt im Gesundheitswesen, wo ich viele Jahre mit Menschen in unterschiedlichen Lebenssituaationen gearbeitet habe. Dabei wurde mir immer deutlicher, wie eng körperliche, emotionale und energetische Prozesse miteinander verbunden sind.
+                  Mein beruflicher Hintergrund liegt im Gesundheitswesen, wo ich viele Jahre mit Menschen in unterschiedlichen Lebenssituationen gearbeitet habe. Dabei wurde mir immer deutlicher, wie eng körperliche, emotionale und energetische Prozesse miteinander verbunden sind.
                 </p>
                 <p>
                   Diese Erfahrung führte mich zur Energiearbeit, in der ich mich nach der Methode von A. J. Stäger ausbilden liess. Um meine Arbeit weiter zu vertiefen, absolvierte ich zusätzlich Weiterbildungen in Integrativer Körperpsychotherapie (IBP) sowie in Thai Yoga Massage.
