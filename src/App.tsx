@@ -46,7 +46,7 @@ export default function App() {
       description: "Die Energiearbeit wirkt auf feinstofflicher Ebene. Blockaden im Energiesystem können erkannt und sanft gelöst werden. Dadurch entstehen mehr Klarheit, innere Ruhe und ein freierer Zugang zur eigenen Lebenskraft.",
       benefits: ["Stress und Erschöpfung", "Emotionale Belastungen", "wiederkehrenden Mustern", "dem Wunsch nach innerer Ausrichtung"],
       icon: <Sparkles className="w-6 h-6" />,
-      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAMhQTvE_UvoUvV9Rta_1lgfmOUYir1x22rVqWWKu8dgR_1JrpPKb69tSbncLoIhwmh7zKcA5gfvf2ja4vzg6cV-nDXKqC-MrWZao_M4glH7qZ6-zzY3WQD9JBo1hYNCPblKXzjsXH2rxImDlDOzUFIRKj79wFB1etEOHZKYM2-ESrvrXQaJLOYWYH6hawGV426-lWSUg2dd24ZbvwLbM1vGqB3IlrOtSX9eRDO3zScVp5_YKnA6RP4E1c-Y_g4HNlJvz4K-fAcgo4a"
+      image: "/hands_vio.jpeg"
     },
     {
       title: "Energetische Raumreinigung",
@@ -60,7 +60,7 @@ export default function App() {
       description: "Die Thai Yoga Massage ist eine ganzheitliche Körperarbeit, die Elemente aus Akupressur, sanften Dehnungen und achtsamer Berührung vereint. Sie wird am bekleideten Körper auf einer Matte am Boden durchgeführt. Durch rhythmischen Druck entlang der Energielinien sowie durch passive Dehnungen wird der Energiefluss angeregt, Verspannungen lösen sich und der Körper kann tief entspannen.",
       benefits: ["vitalisierend und gleichzeitig beruhigend", "lösend bei muskulären Spannungen", "unterstützend bei Erschöpfung", "ausgleichend für das Nervensystem."],
       icon: <Leaf className="w-6 h-6" />,
-      image: "https://gsi-85.github.io/stella-energiearbeit-v1.1/static/raum-baar-26.png"
+      image: "/raum-baar-26.jpeg"
     },
     {
       title: "IBP Prozessbegleitung",
