@@ -13,32 +13,93 @@ import {
   Mail, 
   Phone, 
   MapPin, 
-  Menu, 
-  X,
   ChevronRight,
   Sparkle
 } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useEffect, useRef } from "react";
+import Nav from "./components/Nav";
+import Footer from "./components/Footer";
+import useHashScroll from "./hooks/useHashScroll";
+
+declare global {
+  interface Window {
+    Cal?: any;
+  }
+}
+
+// Cal.com-Benutzername der Praxis (https://cal.com/stella-energiearbeit).
+// Ohne Event-Slug zeigt Cal alle Behandlungen als Auswahlliste – genau das wollen wir.
+const CAL_LINK = "stella-energiearbeit";
 
 export default function App() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const calRef = useRef<HTMLDivElement>(null);
+  const calLoaded = useRef(false);
 
+  useHashScroll();
+
+  // Cal.com wird erst geladen, wenn der Kalender in Sichtweite kommt.
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    const container = calRef.current;
+    if (!container) return;
 
-  const navLinks = [
-    { name: "Home", href: "#home" },
-    { name: "Angebot", href: "#offerings" },
-    { name: "Behandlung", href: "#process" },
-    { name: "Über mich", href: "#about" },
-    { name: "Kontakt", href: "#contact" },
-  ];
+    const initCal = () => {
+      if (calLoaded.current) return;
+      calLoaded.current = true;
+
+      (function (C: any, A: string, L: string) {
+        let p = function (a: any, ar: any) { a.q.push(ar); };
+        let d = C.document;
+        C.Cal = C.Cal || function () {
+          let cal = C.Cal; let ar = arguments;
+          if (!cal.loaded) {
+            cal.ns = {}; cal.q = cal.q || [];
+            d.head.appendChild(d.createElement("script")).src = A;
+            cal.loaded = true;
+          }
+          if (ar[0] === L) {
+            const api = function () { p(api, arguments); };
+            const namespace = ar[1];
+            api.q = api.q || [];
+            if (typeof namespace === "string") {
+              cal.ns[namespace] = cal.ns[namespace] || api;
+              p(cal.ns[namespace], ar);
+              p(cal, ["initNamespace", namespace]);
+            } else { p(cal, ar); }
+            return;
+          }
+          p(cal, ar);
+        };
+      })(window, "https://app.cal.com/embed/embed.js", "init");
+
+      window.Cal("init", { origin: "https://app.cal.com" });
+
+      window.Cal("inline", {
+        elementOrSelector: "#buchungs-kalender",
+        calLink: CAL_LINK,
+        config: { layout: "month_view" },
+      });
+
+      window.Cal("ui", {
+        theme: "light",
+        cssVarsPerTheme: { light: { "cal-brand": "#cc9797" } },
+        hideEventTypeDetails: false,
+        layout: "month_view",
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          initCal();
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "400px" }
+    );
+    observer.observe(container);
+
+    return () => observer.disconnect();
+  }, []);
 
   const offers = [
     {
@@ -73,84 +134,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen selection:bg-rose/20 selection:text-rose">
-      {/* Navigation */}
-      <nav 
-        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-          scrolled ? "bg-cream/95 backdrop-blur-md py-4 shadow-md" : "bg-transparent py-6"
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-          <motion.a 
-            href="#home"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className={`text-2xl font-serif font-medium tracking-tight transition-colors ${
-              scrolled ? "text-rose" : "text-rose-dark drop-shadow-sm"
-            }`}
-          >
-            Stella Anastasio
-          </motion.a>
-
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <a 
-                key={link.name} 
-                href={link.href}
-                className={`text-sm uppercase tracking-widest font-bold transition-all hover:text-rose relative group ${
-                  scrolled ? "text-rose-dark" : "text-rose-dark drop-shadow-sm"
-                }`}
-              >
-                {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-rose transition-all group-hover:w-full"></span>
-              </a>
-            ))}
-            <a 
-              href="#contact"
-              className="bg-rose text-white px-6 py-2 rounded-full text-sm uppercase tracking-widest font-bold hover:bg-rose/90 transition-all shadow-lg shadow-rose/20"
-            >
-              Termin Buchen
-            </a>
-          </div>
-
-          {/* Mobile Menu Toggle */}
-          <button 
-            className={`md:hidden p-2 rounded-lg ${scrolled ? "text-rose" : "text-rose-dark"}`}
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? <X /> : <Menu />}
-          </button>
-        </div>
-
-        {/* Mobile Nav */}
-        {isMenuOpen && (
-          <motion.div 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="absolute top-full left-0 w-full bg-cream border-t border-stone-100 p-6 md:hidden shadow-2xl"
-          >
-            <div className="flex flex-col space-y-4">
-              {navLinks.map((link) => (
-                <a 
-                  key={link.name} 
-                  href={link.href}
-                  onClick={() => setIsMenuOpen(false)}
-                  className="text-lg font-serif text-stone-800 hover:text-rose py-2 border-b border-stone-50"
-                >
-                  {link.name}
-                </a>
-              ))}
-              <a 
-                href="#contact"
-                onClick={() => setIsMenuOpen(false)}
-                className="bg-rose text-white px-6 py-4 rounded-xl text-center font-bold uppercase tracking-widest mt-4"
-              >
-                Termin Buchen
-              </a>
-            </div>
-          </motion.div>
-        )}
-      </nav>
+      <Nav />
 
       {/* Hero Section */}
       <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
@@ -338,6 +322,49 @@ export default function App() {
         </div>
       </section>
 
+      {/* Booking Section */}
+      <section id="buchung" className="py-32 bg-warm-bg">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-16 max-w-3xl"
+          >
+            <span className="text-rose uppercase tracking-[0.3em] text-xs font-bold mb-4 block">Termin</span>
+            <h2 className="text-5xl md:text-6xl font-serif text-rose-dark mb-8 flex items-center gap-5">
+              <Calendar className="w-10 h-10 text-rose shrink-0" />
+              Termin buchen
+            </h2>
+            <p className="text-stone-600 text-lg leading-relaxed">
+              Wähle hier direkt einen freien Termin, der dir passt – die Bestätigung erhältst du sofort per E-Mail.
+            </p>
+          </motion.div>
+
+          <div className="relative">
+            <div className="absolute -inset-4 bg-rose/5 rounded-[3rem] blur-2xl"></div>
+            <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white bg-white">
+              <div id="buchungs-kalender" ref={calRef} className="w-full min-h-[700px]" />
+            </div>
+          </div>
+
+          <div className="mt-10 max-w-3xl space-y-3 text-sm text-stone-500 leading-relaxed">
+            <p>
+              Du kannst deinen Termin jederzeit über den Link in der Bestätigungs-E-Mail verschieben
+              oder absagen. Bitte spätestens 24 Stunden vor dem Termin – bei späteren Absagen oder
+              Nichterscheinen wird eine Administrationspauschale von 50 Franken verrechnet.
+            </p>
+            <p>
+              Die Terminbuchung erfolgt über den Dienst Cal.com. Mehr dazu in der{" "}
+              <a href="/rechtliches.html#datenschutz" className="text-rose font-medium hover:underline">
+                Datenschutzerklärung
+              </a>
+              .
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* About Section */}
       <section id="about" className="py-32 bg-cream overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
@@ -412,7 +439,11 @@ export default function App() {
             <div>
               <h2 className="text-5xl md:text-6xl font-serif text-rose mb-8">Kontaktiere mich</h2>
               <p className="text-stone-600 text-xl mb-12 leading-relaxed">
-                Ich freue mich darauf, dich auf deinem Weg zu begleiten. Buche deinen Termin oder stelle mir deine Fragen ganz unverbindlich.
+                Ich freue mich darauf, dich auf deinem Weg zu begleiten.{" "}
+                <a href="#buchung" className="text-rose font-medium hover:underline">
+                  Buche deinen Termin
+                </a>{" "}
+                oder stelle mir deine Fragen ganz unverbindlich.
               </p>
               
               <div className="space-y-8">
@@ -466,22 +497,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-cream py-16 border-t border-stone-100">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-10">
-            <div className="text-2xl font-serif text-rose">Stella Anastasio</div>
-            <div className="flex gap-10">
-              <a href="#" className="text-xs uppercase tracking-widest font-bold text-stone-400 hover:text-rose transition-colors">Impressum</a>
-              <a href="#" className="text-xs uppercase tracking-widest font-bold text-stone-400 hover:text-rose transition-colors">Datenschutz</a>
-              <a href="#contact" className="text-xs uppercase tracking-widest font-bold text-stone-400 hover:text-rose transition-colors">Contact</a>
-            </div>
-            <div className="text-xs uppercase tracking-widest font-bold text-stone-400">
-              © {new Date().getFullYear()} Stella Anastasio.
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
