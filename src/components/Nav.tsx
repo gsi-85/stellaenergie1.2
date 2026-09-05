@@ -4,7 +4,7 @@
  */
 
 import { motion } from "motion/react";
-import { Menu, X } from "lucide-react";
+import { Calendar, Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 
 export const navLinks = [
@@ -49,7 +49,7 @@ export default function Nav({ base = "", solid = false }: NavProps) {
           href={`${base}#home`}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className={`text-2xl font-serif font-medium tracking-tight transition-colors ${
+          className={`text-xl md:text-2xl font-serif font-medium tracking-tight transition-colors ${
             opaque ? "text-rose" : "text-rose-dark drop-shadow-sm"
           }`}
         >
@@ -78,15 +78,25 @@ export default function Nav({ base = "", solid = false }: NavProps) {
           </a>
         </div>
 
-        {/* Mobile Menu Toggle */}
-        <button
-          className={`md:hidden p-2 rounded-lg ${opaque ? "text-rose" : "text-rose-dark"}`}
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label={isMenuOpen ? "Menü schliessen" : "Menü öffnen"}
-          aria-expanded={isMenuOpen}
-        >
-          {isMenuOpen ? <X /> : <Menu />}
-        </button>
+        {/* Mobile: sichtbarer Buchungs-CTA neben dem Menü */}
+        <div className="flex items-center gap-2 md:hidden">
+          <a
+            href={`${base}#buchung`}
+            onClick={() => setIsMenuOpen(false)}
+            className="bg-rose text-white pl-3 pr-4 py-2 rounded-full text-xs uppercase tracking-wide font-bold flex items-center gap-1.5 shadow-lg shadow-rose/20 hover:bg-rose/90 transition-all"
+          >
+            <Calendar className="w-4 h-4 shrink-0" />
+            Buchen
+          </a>
+          <button
+            className={`p-2 rounded-lg ${opaque ? "text-rose" : "text-rose-dark"}`}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label={isMenuOpen ? "Menü schliessen" : "Menü öffnen"}
+            aria-expanded={isMenuOpen}
+          >
+            {isMenuOpen ? <X /> : <Menu />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Nav */}
