@@ -107,7 +107,7 @@ export default function App() {
       description: "Die Energiearbeit wirkt auf feinstofflicher Ebene. Blockaden im Energiesystem können erkannt und sanft gelöst werden. Dadurch entstehen mehr Klarheit, innere Ruhe und ein freierer Zugang zur eigenen Lebenskraft.",
       benefits: ["Stress und Erschöpfung", "Emotionale Belastungen", "wiederkehrenden Mustern", "dem Wunsch nach innerer Ausrichtung"],
       icon: <Sparkles className="w-6 h-6" />,
-      image: "/hands_vio.jpeg"
+      image: "/plant.jpeg"
     },
     {
       title: "Energetische Raumreinigung",
@@ -270,7 +270,7 @@ export default function App() {
                   Gemeinsam finden wir den Weg, der dich in deinem aktuellen Lebensabschnitt am besten unterstützt – körperlich, emotional und energetisch.
                 </p>
                 <p className="text-sm">
-                  Preise nach Absprache bei Thai Yoga Massage und Energetischer Raumreinigung.
+                  Preise nach Absprache bei der Energetischen Raumreinigung.
                 </p>
               </div>
             </div>
@@ -305,7 +305,7 @@ export default function App() {
                   </div>
                   <div className="text-right">
                     <span className="text-xs text-cream/40 block mb-1 uppercase tracking-widest">90 Min</span>
-                    <span className="text-2xl font-serif text-lg">nach Absprache</span>
+                    <span className="text-2xl font-serif">100 CHF</span>
                   </div>
                 </div>
               </div>
