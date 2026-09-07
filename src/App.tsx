@@ -107,28 +107,32 @@ export default function App() {
       description: "Die Energiearbeit wirkt auf feinstofflicher Ebene. Blockaden im Energiesystem können erkannt und sanft gelöst werden. Dadurch entstehen mehr Klarheit, innere Ruhe und ein freierer Zugang zur eigenen Lebenskraft.",
       benefits: ["Stress und Erschöpfung", "Emotionale Belastungen", "wiederkehrenden Mustern", "dem Wunsch nach innerer Ausrichtung"],
       icon: <Sparkles className="w-6 h-6" />,
-      image: "/plant.jpeg"
+      image: "/plant.jpeg",
+      imagePosition: "object-center"
     },
     {
       title: "Energetische Raumreinigung",
       description: "Energiearbeit kann nicht nur den Menschen selbst unterstützen, sondern auch das Umfeld, in dem wir leben und arbeiten. Auch Räume tragen Erinnerungen, Stimmungen und Eindrücke. Wenn sich diese verdichten, kann die Atmosphäre eines Ortes als belastend oder unruhig empfunden werden.",
       benefits: ["Wohnungen und Häuser", "Praxisräume", "Arbeitsräume", "nach Umzug oder Veränderungen"],
       icon: <Wind className="w-6 h-6" />,
-      image: "/raumreinigung.jpeg"
+      image: "/raumreinigung.jpeg",
+      imagePosition: "object-center"
     },
     {
       title: "Thai Yoga Massage",
       description: "Die Thai Yoga Massage ist eine ganzheitliche Körperarbeit, die Elemente aus Akupressur, sanften Dehnungen und achtsamer Berührung vereint. Sie wird am bekleideten Körper auf einer Matte am Boden durchgeführt. Durch rhythmischen Druck entlang der Energielinien sowie durch passive Dehnungen wird der Energiefluss angeregt, Verspannungen lösen sich und der Körper kann tief entspannen.",
       benefits: ["vitalisierend und gleichzeitig beruhigend", "lösend bei muskulären Spannungen", "unterstützend bei Erschöpfung", "ausgleichend für das Nervensystem."],
       icon: <Leaf className="w-6 h-6" />,
-      image: "/raum-baar-26.jpeg"
+      image: "/raum-baar-2026-2.jpeg",
+      imagePosition: "object-[center_25%]"
     },
     {
       title: "IBP Prozessbegleitung",
       description: "Die IBP Prozessbegleitung verbindet Körperwahrnehmung, Atem, Gespräch und achtsame Selbsterforschung. Viele unserer Prägungen und Erfahrungen sind im Körper gespeichert. Durch bewusstes Wahrnehmen, Verstehen und Integrieren können alte Muster transformiert und neue Handlungsspielräume eröffnet werden.",
       benefits: ["Beziehungsthemen", "Selbstwertfragen", "Übergängen und Lebenskrisen", "emotionaler Regulation", "persönlicher Entwicklung"],
       icon: <Heart className="w-6 h-6" />,
-      image: "/river.jpeg"
+      image: "/river.jpeg",
+      imagePosition: "object-center"
     }
   ];
 
@@ -216,10 +220,10 @@ export default function App() {
                   <div className="relative group">
                     <div className="absolute -inset-4 bg-rose/5 rounded-[3rem] scale-95 group-hover:scale-100 transition-transform duration-700"></div>
                     <div className="relative aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl">
-                      <img 
-                        src={offer.image} 
-                        alt={offer.title} 
-                        className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                      <img
+                        src={offer.image}
+                        alt={offer.title}
+                        className={`w-full h-full object-cover ${offer.imagePosition} transition-transform duration-1000 group-hover:scale-110`}
                         referrerPolicy="no-referrer"
                       />
                     </div>
